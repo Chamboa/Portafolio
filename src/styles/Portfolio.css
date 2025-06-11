@@ -141,21 +141,25 @@
    SECCIÓN HERO
    ========================= */
 .hero-section {
-  height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 7rem 2rem 5rem 2rem; /* padding-top aumentado para navbar fijo */
   position: relative;
   z-index: 1;
   background: transparent;
+  box-sizing: border-box;
+  margin-top: 5rem; /* AGREGA ESTA LÍNEA para separar del bloque anterior */
 }
 .hero-content {
   display: flex;
   gap: 3rem;
   align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .profile-container {
   position: relative;
@@ -235,17 +239,20 @@
    SECCIÓN EXPERIENCIA
    ========================= */
 .experience-section {
+  width: 100%;
   padding: 5rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
   position: relative;
   z-index: 1;
   background: transparent;
+  box-sizing: border-box;
 }
 .experience-timeline {
   position: relative;
   padding-left: 2rem;
   margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .experience-timeline::before {
   content: '';
@@ -366,7 +373,8 @@
   margin: 0 auto;
 }
 .project-card {
-  position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 400px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -400,7 +408,10 @@
   filter: brightness(1);
 }
 .project-content {
-  flex: 1;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 1.5rem;
   background: rgba(17, 24, 39, 0.95);
   backdrop-filter: blur(10px);
@@ -730,4 +741,105 @@
 .contact-section {
   transform-style: preserve-3d;
   will-change: transform;
+}
+
+/* =========================
+   SECCIÓN FORMACIÓN (EDUCATION) - HORIZONTAL TIMELINE
+   ========================= */
+.education-section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+.education-timeline {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  margin-top: 3rem;
+  gap: 3rem;
+  padding: 2rem 0 0 0;
+}
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0.3rem;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-color);
+  opacity: 0.3;
+  z-index: 0;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.education-item {
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 1.5rem 2rem 1rem 2rem;
+  min-width: 220px;
+  max-width: 300px;
+  text-align: center;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-top: 0; /* Ensure all items align horizontally */
+}
+.education-item::before {
+  content: '';
+  position: absolute;
+  top: -2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  border: 3px solid var(--dark-bg);
+  z-index: 2;
+}
+.education-title {
+  font-size: 1.3rem;
+  color: var(--text-light);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+.education-date {
+  font-size: 1rem;
+  color: var(--text-light-soft);
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 900px) {
+  .education-timeline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-left: 2rem;
+  }
+  .education-timeline::before {
+    top: 0;
+    left: 1rem;
+    right: auto;
+    width: 4px;
+    height: 100%;
+    margin: 0;
+  }
+  .education-item {
+    min-width: 0;
+    max-width: 100%;
+    text-align: left;
+    padding: 1.5rem 1rem 1rem 2.5rem;
+  }
+  .education-item::before {
+    top: 1.5rem;
+    left: -2.2rem;
+    transform: none;
+  }
 }
